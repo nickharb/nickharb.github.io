@@ -28,7 +28,7 @@ $(function () {
 
     $.ajax({
         type: "GET",
-        url: "data/aqi-data-test.csv",
+        url: "data/aqi-data.csv",
         dataType: "text",
         success: function(data) {initialize(data);}
     });
@@ -100,10 +100,10 @@ $(function () {
                     chartData[city][year]['rainfall'].push([]);
 
                     var y = 2;
-                    var rainfall = parseInt(cityData[city][year][month]['rainfall']);
-                    var aqi_high = parseInt(cityData[city][year][month]['aqi_high']);
-                    var aqi_avg = parseInt(cityData[city][year][month]['aqi_avg']);
-                    var aqi_low = parseInt(cityData[city][year][month]['aqi_low']);
+                    var rainfall = parseFloat(cityData[city][year][month]['rainfall']);
+                    var aqi_high = parseFloat(cityData[city][year][month]['aqi_high']);
+                    var aqi_avg = parseFloat(cityData[city][year][month]['aqi_avg']);
+                    var aqi_low = parseFloat(cityData[city][year][month]['aqi_low']);
 
                     // Populate AQI cityData
                     for (var i = 0; i < 3; i++) {
@@ -399,7 +399,7 @@ $(function () {
             exporting: {
                 chartOptions: {
                     title: {
-                        text: 'Average Rainfall (2015)'
+                        text: 'Monthly Precipitation'
                     },
                     chart: {
                         marginTop: 50
