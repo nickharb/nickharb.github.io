@@ -28,7 +28,7 @@ $(function () {
 
     $.ajax({
         type: "GET",
-        url: "data/aqi-data.csv",
+        url: "data/aqi-data-test.csv",
         dataType: "text",
         success: function(data) {initialize(data);}
     });
@@ -37,8 +37,10 @@ $(function () {
         aqiData = processData(data);
         currentCity = 'Beijing';
         currentYear = '2016';
-        buildHeatMap(aqiData[currentCity][currentYear]['aqi']);
-        buildBarChart(aqiData[currentCity][currentYear]['rainfall']);
+        buildHeatMap();
+        buildBarChart();
+        // updateChart(aqiData[currentCity][currentYear]);
+        updateChart(aqiData['BeijingInit'][currentYear]);
         setDropdownHandler();
     };
 
@@ -162,7 +164,7 @@ $(function () {
     // Chart constructors
     // ================================================= //
 
-    function buildHeatMap(data) {
+    function buildHeatMap() {
         var yAxisCategories = (isMobile) ? ['Lo', 'Avg', 'Hi'] : ['Low AQI', 'Avg. AQI', 'High AQI'],
             marginLeft = (isMobile) ? 35 : 68,
             ttDefault = {
@@ -302,7 +304,7 @@ $(function () {
             tooltip: tooltip,
             series: [{
                 borderWidth: 1,
-                data: data,
+                // data: data,
                 dataLabels: {
                     enabled: false
                 },
@@ -318,7 +320,7 @@ $(function () {
         $('#aq-heatmap-container .highcharts-series rect').attr('rx', '6px');
     };
 
-    function buildBarChart(data) {
+    function buildBarChart() {
         var marginTop = (isMobile) ? 5 : 20,
             marginLeft = (isMobile) ? 35 : 68;
 
@@ -426,7 +428,7 @@ $(function () {
                 }
             },
             series: [{
-                data: data
+                // data: data
             }]
         });
     };
