@@ -209,7 +209,17 @@ $(function () {
                 marginLeft: marginLeft,
                 borderWidth: 0,
                 plotBorderWidth: 0,
-                renderTo: 'aq-heatmap-container'
+                renderTo: 'aq-heatmap-container',
+                events:{
+                    load: function() {
+                        this.credits.element.onclick = function() {
+                            window.open(
+                              'http://beijing.usembassy-china.org.cn/aqirecent3.html',
+                              '_blank'
+                            );
+                        }
+                    }
+                }
             },
             title: {
                 text: ''
@@ -285,7 +295,7 @@ $(function () {
             exporting: {
                 chartOptions: {
                     title: {
-                        text: 'Air Quality Index (2015)'
+                        text: 'China Air Quality Index'
                     },
                     chart: {
                         marginTop: 65
@@ -331,7 +341,17 @@ $(function () {
                 marginTop: marginTop,
                 marginBottom: 26,
                 marginLeft: marginLeft,
-                renderTo: 'aq-barchart-container'
+                renderTo: 'aq-barchart-container',
+                events:{
+                    load: function() {
+                        this.credits.element.onclick = function() {
+                            window.open(
+                              'http://www.cma.gov.cn/en2014/',
+                              '_blank'
+                            );
+                        }
+                    }
+                }
             },
             title: {
                 text: ''
